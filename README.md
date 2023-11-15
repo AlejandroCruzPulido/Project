@@ -2,7 +2,9 @@
 Este proyecto está destinado a realizar una página de venta de gafas, utilizando:
 
 Frontend: Reactjs
+
 Backend: Express
+
 ORM: Sequialize
 
 ## Use Case:
