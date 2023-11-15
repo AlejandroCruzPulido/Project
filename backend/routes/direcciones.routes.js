@@ -8,10 +8,10 @@ module.exports = app => {
     router.get("/", direcciones.findAll);
   
     router.get("/:id", direcciones.findOne);
-  
+  /*
     router.put("/:id", direcciones.update);
   
     router.delete("/:id", direcciones.delete);
-  
+  */
     app.use('/api/direcciones', router);
   };

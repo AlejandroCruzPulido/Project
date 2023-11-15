@@ -17,7 +17,10 @@ module.exports = (sequelize, Sequelize) => {
       },
       stock: {
         type: Sequelize.BOOLEAN
-      }
+      },
+      filename: {
+        type: Sequelize.STRING
+       }
     });
   
     return Gafas;

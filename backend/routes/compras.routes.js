@@ -8,10 +8,10 @@ module.exports = app => {
     router.get("/", compras.findAll);
   
     router.get("/:id", compras.findOne);
-  
+  /*
     router.put("/:id", compras.update);
   
     router.delete("/:id", compras.delete);
-  
+  */
     app.use('/api/compras', router);
   };

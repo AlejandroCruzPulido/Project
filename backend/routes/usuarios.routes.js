@@ -8,10 +8,10 @@ module.exports = app => {
     router.get("/", usuarios.findAll);
   
     router.get("/:id", usuarios.findOne);
-  
+  /*
     router.put("/:id", usuarios.update);
   
     router.delete("/:id", usuarios.delete);
-  
+  */
     app.use('/api/usuarios', router);
   };
