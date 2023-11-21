@@ -53,6 +53,21 @@ exports.findOne = (req, res) => {
     });
 };
 
-exports.post = () =>{
-  
-}
+exports.update = (req, res) => {
+  const user = {
+    name: req.body.name,
+    surname: req.body.surname,
+    email: req.body.email,
+    password: req.body.password,
+  }
+
+  Users.update(user, { 
+    where: { id: req.params.id } 
+  }).then(data => {
+    res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while updating the user with id=${req.params.id}`
+    })
+  });
+};
