@@ -20,9 +20,36 @@ const sequelize = new Sequelize(dbConfig.DB,
   db.Sequelize = Sequelize;
   db.sequelize = sequelize;
 
-  db.gafas = require("./gafas.model.js")(sequelize, Sequelize);
-  db.usuarios = require("./usuarios.model.js")(sequelize, Sequelize);
-  db.direcciones = require("./direcciones.model.js")(sequelize, Sequelize);
-  db.compras = require("./compras.model.js")(sequelize, Sequelize);
+  db.glasses = require("./glasses.model.js")(sequelize, Sequelize);
+  db.users = require("./users.model.js")(sequelize, Sequelize);
+  db.directions = require("./directions.model.js")(sequelize, Sequelize);
+  db.buys = require("./buys.model.js")(sequelize, Sequelize);
+  db.contain = require("./contain.model.js")(sequelize, Sequelize);
+
+  db.users.hasMany(db.buys, {
+    foreignKey: 'id_user'
+  });
+
+  db.buys.belongsTo(db.users, {
+    foreignKey: 'id_user'
+  });
+
+  db.users.hasMany(db.directions, {
+    foreignKey: 'id_user'
+  });
+
+  db.buys.belongsTo(db.directions, {
+    foreignKey: 'id_user'
+  });  
+
+  db.buys.belongsToMany(db.contain, {
+    through: 'contain',
+    foreignKey: 'id_buys'
+  });
+  
+  db.glasses.belongsToMany(db.contain, {
+    through: 'contain',
+    foreignKey: 'id_glasses'
+  });
 
   module.exports = db;

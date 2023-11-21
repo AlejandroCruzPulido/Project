@@ -24,14 +24,14 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 
 app.get("/", (req, res) => {
-  res.json({ message: "Bienvenido a la pagina web de Gafas."});
+  res.json({ message: "Welcome to glasses application."});
 });
 
-require("./routes/gafas.routes")(app);
-require("./routes/usuarios.routes")(app);
-require("./routes/direcciones.routes")(app);
-require("./routes/compras.routes")(app);
-require("./routes/contienen.routes")(app);
+require("./routes/glasses.routes")(app);
+require("./routes/users.routes")(app);
+require("./routes/directions.routes")(app);
+require("./routes/buys.routes")(app);
+require("./routes/contain.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
