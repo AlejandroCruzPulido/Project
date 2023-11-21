@@ -52,3 +52,7 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.post = () =>{
+  
+}

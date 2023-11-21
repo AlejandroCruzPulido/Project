@@ -50,3 +50,23 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  const buy = {
+    orderState: req.body.orderState,
+    id_user: req.body.id_user,
+  }
+
+  Buys.update(buy, { 
+    where: { id: req.params.id } 
+  }).then(data => {
+    res.send(data);
+    res.send({
+      message: "The buy was update"
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while updating the buy with id=${req.params.id}`
+    })
+  });
+};
