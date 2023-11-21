@@ -83,7 +83,7 @@ exports.update = async (req, res) => {
       const imagePath = path.join(__dirname, '../public/images', existingGlasses.image);
       fs.unlinkSync(imagePath);
     }
-    
+
     if (req.file) {
       const img = req.file.path;
       glasses.image = img;
@@ -100,3 +100,29 @@ exports.update = async (req, res) => {
     });
   }
 };
+
+exports.delete = async (req, res) => {
+  try {
+      let id = req.params.id;
+      const existingGlasses = await Glasses.findByPk(id);
+
+      if (!existingGlasses) {
+          return res.status(404).send({
+              message: `Cannot find Glasses with id=${id}.`
+          });
+      }
+
+      if (existingGlasses.image) {
+          const imagePath = path.join(__dirname, '../public/images', existingGlasses.image);
+          fs.unlinkSync(imagePath);
+      }
+
+      await Glasses.destroy({ where: { id: id } });
+      res.status(200).json("Glasses has been deleted.");
+  } catch (err) {
+      res.status(500).send({
+          message: "Error deleting the glasses"
+      });
+  }
+};
+

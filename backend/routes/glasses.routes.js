@@ -12,7 +12,7 @@ module.exports = app => {
 
   router.put("/:id", upload.single('file'), glasses.update);
 
-  //router.delete("/:id", glasses.delete);
+  router.delete("/:id", glasses.delete);
   
   app.use('/api/glasses', router);
 };
