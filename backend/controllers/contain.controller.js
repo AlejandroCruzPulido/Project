@@ -1,0 +1,54 @@
+const db = require("../models");
+const Contain = db.contain;
+const Op = db.Sequelize.Op;
+
+exports.create = (req, res) => {
+  if (!req.body.paymentMethod ) {
+    res.status(400).send({
+      message: "Content cannot be empty!"
+    });
+  }
+
+  const contain = {
+    id_buys: req.body.id_buys,
+    id_glasses: req.body.id_glasses,
+    paymentMethod: req.body.paymentMethod,
+    date: req.body.date
+  }
+
+  Contain.create(contain).then(data => {
+    res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || "Some error occurred while creating"
+    })
+  });
+};
+
+exports.findAll = (req, res) => {
+  Contain.findAll().then(data => {
+    res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || "Some error occurred while retrieving all"
+    })
+  })
+};
+
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  Contain.findByPk(id)
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find the id=${id}.`
+        });
+      }
+    }).catch(err => {
+      res.status(500).send({
+        message: "Error retrieving the id=" + id
+      });
+    });
+};
