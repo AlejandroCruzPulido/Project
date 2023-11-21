@@ -50,3 +50,20 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  const direction = {
+    direction: req.body.direction,
+    id_user: req.body.id_user
+  }
+
+  Direction.update(direction, { 
+    where: { id: req.params.id } 
+  }).then(data => {
+    res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while updating the direction with id=${req.params.id}`
+    })
+  });
+};
