@@ -10,10 +10,9 @@ module.exports = app => {
 
   router.get("/:id", glasses.findOne);
 
-  /*
   router.put("/:id", upload.single('file'), glasses.update);
 
-  router.delete("/:id", glasses.delete);
-  */
+  //router.delete("/:id", glasses.delete);
+  
   app.use('/api/glasses', router);
 };
