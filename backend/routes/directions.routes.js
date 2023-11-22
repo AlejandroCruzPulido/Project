@@ -11,7 +11,7 @@ module.exports = app => {
   
     router.put("/:id", directions.update);
   
-  //  router.delete("/:id", directions.delete);
+    router.delete("/:id", directions.delete);
   
     app.use('/api/directions', router);
   };

@@ -67,3 +67,17 @@ exports.update = (req, res) => {
     })
   });
 };
+
+exports.delete = (req, res) => {
+  Direction.destroy({ 
+    where: { id: req.params.id } 
+  }).then(() => {
+    res.status(200).send({
+      message: "Direction deleted!"
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while deleting the direction with id=${req.params.id}`
+    });
+  });
+}
