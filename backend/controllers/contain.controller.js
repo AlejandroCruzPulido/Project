@@ -67,7 +67,21 @@ exports.update = (req, res) => {
     res.send(data);
   }).catch(err => {
     res.status(500).send({
-      message: err.message || `Some error occurred while updating the user with id=${req.params.id}`
+      message: err.message || `Some error occurred while updating the contain with id=${req.params.id}`
     })
   });
 };
+
+exports.delete = (req, res) => {
+  Contain.destroy({ 
+    where: { id: req.params.id } 
+  }).then(() => {
+    res.status(200).send({
+      message: "Contain deleted!"
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while deleting the contain with id=${req.params.id}`
+    });
+  });
+}
