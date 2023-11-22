@@ -70,3 +70,17 @@ exports.update = (req, res) => {
     })
   });
 };
+
+exports.delete = (req, res) => {
+  Buys.destroy({ 
+    where: { id: req.params.id } 
+  }).then(() => {
+    res.status(200).send({
+      message: "Buy deleted!"
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while deleting the buy with id=${req.params.id}`
+    });
+  });
+}

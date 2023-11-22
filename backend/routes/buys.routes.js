@@ -11,7 +11,7 @@ module.exports = app => {
   
     router.put("/:id", buys.update);
   
-    // router.delete("/:id", buys.delete);
+    router.delete("/:id", buys.delete);
   
     app.use('/api/buys', router);
   };

@@ -52,3 +52,22 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  const contain = {
+    id_buys: req.body.id_buys,
+    id_glasses: req.body.id_glasses,
+    paymentMethod: req.body.paymentMethod,
+    date: req.body.date
+  }
+
+  Contain.update(contain, { 
+    where: { id: req.params.id } 
+  }).then(data => {
+    res.send(data);
+  }).catch(err => {
+    res.status(500).send({
+      message: err.message || `Some error occurred while updating the user with id=${req.params.id}`
+    })
+  });
+};
