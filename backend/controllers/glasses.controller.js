@@ -1,22 +1,10 @@
 const db = require("../models");
 const Glasses = db.glasses;
 const Op = db.Sequelize.Op;
-/*
-const fs = require('fs');
+
 const path = require('path');
+const fs = require('fs');
 
-const eliminarImagenDesdeCarpeta = (imageName) => {
-  const imagePath = path.join(__dirname, '..', 'public', 'images', imageName);
-  console.log('Ruta de la imagen:', imagePath);
-
-  if (fs.existsSync(imagePath)) {
-    fs.unlinkSync(imagePath);
-    console.log(`Imagen ${imageName} eliminada con éxito.`);
-  } else {
-    console.log(`La imagen ${imageName} no existe en la carpeta de almacenamiento.`);
-  }
-};
-*/
 exports.create = (req, res) => {
   if (!req.body.color || !req.body.glass || !req.body.mount || !req.body.price) {
     res.status(400).send({
@@ -31,8 +19,8 @@ exports.create = (req, res) => {
     price: req.body.price,
     category: req.body.category,
     stock: req.body.stock,
-    image: req.file ? req.file.image : ""
-  }
+    image: req.file ? req.file.filename : ""
+  };  
 
   Glasses.create(glasses).then(data => {
     res.send(data);
@@ -70,89 +58,70 @@ exports.findOne = (req, res) => {
       });
     });
 };
-/*
-exports.update = (req, res) => {
-  const id = req.params.id;
 
-  Glasses.findByPk(id)
-    .then(gafas => {
-      if (!glasses) {
-        return res.status(404).send({
-          message: `No se han encontrado las Gafas con id=${id} .`
-        });
-      }
+exports.update = async (req, res) => {
+  try {
+    let id = req.params.id;
+    console.log(req.body);
+    let glasses = {
+      color: req.body.color,
+      glass: req.body.glass,
+      mount: req.body.mount,
+      price: req.body.price,
+      category: req.body.category,
+      stock: req.body.stock,
+    };
 
-      if (req.file) {
-        if (glasses.image) {
-          eliminarImagenDesdeCarpeta(glasses.image);
-        }
-        
-        glasses.image = req.file.image;
-      }
-
-      glasses.color = req.body.color;
-      glasses.glass = req.body.glass;
-      glasses.mount = req.body.mount;
-      glasses.price = req.body.price;
-      glasses.category = req.body.category;
-      glasses.stock = req.body.stock;
-
-      glasses.save()
-        .then(() => {
-          res.send({
-            message: "Se ha actualizado la Gafa correctamente."
-          });
-        })
-        .catch(err => {
-          res.status(500).send({
-            message: "Error al catualizar la Gafa con id=" + id
-          });
-        });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error encontrando la Gafa con id=" + id
+    const existingGlasses = await Glasses.findByPk(id);
+    if (!existingGlasses) {
+      return res.status(404).send({
+        message: `Cannot find Glasses with id=${id}.`
       });
+    }
+
+    if (existingGlasses.image) {
+      const imagePath = path.join(__dirname, '../public/images', existingGlasses.image);
+      fs.unlinkSync(imagePath);
+    }
+
+    if (req.file) {
+      const img = req.file.path;
+      glasses.image = img;
+    }
+
+    await Glasses.update(glasses, {
+      where: { id: id }
     });
+
+    res.status(200).send("Glasses updated");
+  } catch (err) {
+    res.status(500).send({
+      message: "Error to update the glasses"
+    });
+  }
 };
 
-exports.delete = (req, res) => {
-  const id = req.params.id;
-  Glasses.findByPk(id)
-    .then(glasses => {
-      if (!glasses) {
-        return res.status(404).send({
-          message: `No se ha encontrado la Gafa con id=${id}.`
-        });
+exports.delete = async (req, res) => {
+  try {
+      let id = req.params.id;
+      const existingGlasses = await Glasses.findByPk(id);
+
+      if (!existingGlasses) {
+          return res.status(404).send({
+              message: `Cannot find Glasses with id=${id}.`
+          });
       }
 
-      const imageName = glasses.image;
+      if (existingGlasses.image) {
+          const imagePath = path.join(__dirname, '../public/images', existingGlasses.image);
+          fs.unlinkSync(imagePath);
+      }
 
-      const imagePath = path.resolve(__dirname, '..', 'public', 'images', imageName);
-      console.log('Ruta de la imagen:', imagePath);
-      
-      Glasses.destroy({
-        where: { id: id }
-      }).then(num => {
-        if (num == 1) {
-          if (imagePath) {
-            eliminarImagenDesdeCarpeta(imageName); 
-          }
-
-          res.send({
-            message: "La Gafa y la imagen asociada han sido eliminadas con exito."
-          });
-        } else {
-          res.send({
-            message: `No se puede eliminar el coche con id=${id}.`
-          });
-        }
-      });
-    })
-    .catch(err => {
+      await Glasses.destroy({ where: { id: id } });
+      res.status(200).json("Glasses has been deleted.");
+  } catch (err) {
       res.status(500).send({
-        message: "No es posible eliminar la Gafa con id=" + id
+          message: "Error deleting the glasses"
       });
-    });
+  }
 };
-*/
