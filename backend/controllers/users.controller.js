@@ -3,7 +3,7 @@ const Users = db.users;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  if (!req.body.name || !req.body.surname || !req.body.email || !req.body.password) {
+  if (!req.body.name || !req.body.surname || !req.body.email || !req.body.password || !req.body.role) {
     res.status(400).send({
       message: "Content cannot be empty!"
     });
@@ -14,6 +14,7 @@ exports.create = (req, res) => {
     surname: req.body.surname,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role
   }
 
   Users.create(user).then(data => {
@@ -59,6 +60,7 @@ exports.update = (req, res) => {
     surname: req.body.surname,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role
   }
 
   Users.update(user, { 
