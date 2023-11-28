@@ -24,6 +24,5 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     tableName: 'contain',
   });
-
   return Contain;
 };
