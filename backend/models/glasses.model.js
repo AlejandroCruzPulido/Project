@@ -13,8 +13,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER
       },
       category: {
-        type: Sequelize.ENUM,
-        value:(Men, Woman, Kid)
+        type: Sequelize.STRING
       },
       stock: {
         type: Sequelize.BOOLEAN
