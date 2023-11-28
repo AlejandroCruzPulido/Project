@@ -1,9 +1,9 @@
 import "./home.css";
 import React, { useState, useEffect } from 'react';
-import ImageSlider1 from '../images/Captura de pantalla (72).png';
-import ImageSlider2 from '../images/Captura de pantalla (73).png';
-import ImageSlider3 from '../images/Captura de pantalla (74).png';
-import logo from '../images/logo.jpg';
+import ImageSlider1 from '../../images/Captura de pantalla (72).png';
+import ImageSlider2 from '../../images/Captura de pantalla (73).png';
+import ImageSlider3 from '../../images/Captura de pantalla (74).png';
+import logo from '../../images/logo.jpg';
 
  function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -30,9 +30,9 @@ import logo from '../images/logo.jpg';
     return (
       <div className="app">
         <header>
-          <div className="menu-icon">Icono de menú</div>
+          <div className="menu-icon">Icon of menú</div>
           <div className="title">Impresioname</div>
-          <div className="cart-icon">Icono de Carrito</div>
+          <div className="cart-icon">Icon of Carry</div>
           </header>
         <div className="content">
           <img src={logo} className='Logo' alt="Logo"/>
@@ -59,9 +59,9 @@ import logo from '../images/logo.jpg';
           <div className="popular-glasses">
             <h2>Most Popular Glasses</h2>
             <div className="glasses-item">
-              <img src="/ruta/gafas.png" alt="Gafas populares" />
-              <h3>Nombre de las gafas</h3>
-              <p>Precio: $100</p>
+              <img src="" alt="Popular glasses"/>
+              <h3>Glasses</h3>
+              <p>Price: $100</p>
             </div>
           </div>
         </div>
