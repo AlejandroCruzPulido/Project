@@ -53,6 +53,10 @@ app.use(function (req, res, next) {
   });
 });
 
+require("./routes/glasses.routes")(app);
+require("./routes/directions.routes")(app);
+require("./routes/buys.routes")(app);
+require("./routes/contain.routes")(app);
 require("./routes/users.routes")(app);
 
 const PORT = process.env.PORT || 8080;
