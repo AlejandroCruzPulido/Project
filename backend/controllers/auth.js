@@ -16,20 +16,20 @@ exports.signin = (req, res) => {
     });
   }
 
-  User.findOne({ where: { email: user } }) 
-    .then(data => {
-      const result = bcrypt.compareSync(pwd, data.password);
-      if(!result) return  res.status(401).send('Password not valid!');
+  User.findOne({ where: { email: user } })
+  .then(data => {
+    const result = bcrypt.compareSync(pwd, data.password);
+    if (!result) return res.status(401).send('Password not valid!');
 
-      const token = utils.generateToken(data);
-      const userObj = utils.getCleanUser(data);
-      return res.json({ user: userObj, access_token: token });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while signing in."
-      });
+    const token = utils.generateToken(data);
+    const userObj = utils.getCleanUser(data);
+    return res.json({ user: userObj, access_token: token });
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: err.message || "Some error occurred while signing in."
     });
+  });
 };
 
 exports.isAuthenticated = (req, res, next) => {

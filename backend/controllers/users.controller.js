@@ -1,7 +1,7 @@
 const db = require("../models");
 const Users = db.users;
 const bcrypt = require('bcryptjs');
-const utils = require("../utils");
+const utils = require("../utils"); 
 
 exports.create = (req, res) => {
   if (!req.body.name || !req.body.surname || !req.body.email || !req.body.password || !req.body.role) {
