@@ -6,7 +6,7 @@ const User = db.users;
 const utils = require('../utils');
 
 exports.signin = (req, res) => {
-  const user = req.body.username;
+  const user = req.body.email;
   const pwd = req.body.password;
 
   if (!user || !pwd) {
