@@ -78,8 +78,6 @@ exports.update = async (req, res) => {
         message: `Cannot find Glasses with id=${id}.`
       });
     }
-
-    // Eliminar la imagen antigua solo si existe y se proporciona una nueva imagen
     if (existingGlasses.image && req.file) {
       const imagePath = path.join(__dirname, '../public/images', existingGlasses.image);
       if (fs.existsSync(imagePath)) {
@@ -112,7 +110,6 @@ exports.update = async (req, res) => {
     });
   }
 };
-
 
 exports.delete = async (req, res) => {
   try {

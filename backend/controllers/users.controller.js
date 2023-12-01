@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const utils = require("../utils"); 
 
 exports.create = (req, res) => {
-  if (!req.body.name || !req.body.surname || !req.body.email || !req.body.password || !req.body.role) {
+  if (!req.body.name || !req.body.email || !req.body.password) {
     res.status(400).send({
       message: "Content cannot be empty!"
     });
@@ -13,7 +13,6 @@ exports.create = (req, res) => {
 
   const user = {
     name: req.body.name,
-    surname: req.body.surname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password),
     role: req.body.role
@@ -63,7 +62,6 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const user = {
     name: req.body.name,
-    surname: req.body.surname,
     email: req.body.email,
     password: req.body.password,
     role: req.body.role

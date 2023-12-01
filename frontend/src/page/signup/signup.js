@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,8 +17,10 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(formData);
       const response = await axios.post("http://localhost:8080/api/users", formData);
       console.log(response.data);
+      navigate("/home");
     } catch (error) {
       console.error("Error signing up:", error.message);
     }
@@ -24,7 +28,6 @@ const Signup = () => {
 
   return (
     <div>
-      <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input type="text" name="name" onChange={handleChange} required />
