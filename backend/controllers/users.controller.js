@@ -12,7 +12,9 @@ exports.create = (req, res) => {
   }
 
   const user = {
+    username: req.body.username,
     name: req.body.name,
+    surname: req.body.surname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password),
     role: req.body.role
@@ -61,9 +63,11 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   const user = {
+    username: req.body.name,
     name: req.body.name,
+    surname: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: bcrypt.hashSync(req.body.password),
     role: req.body.role
   }
 

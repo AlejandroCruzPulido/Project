@@ -6,16 +6,13 @@ const path = require('path');
 const fs = require('fs');
 
 exports.create = (req, res) => {
-  if (!req.body.color || !req.body.glass || !req.body.mount || !req.body.price) {
+  if (!req.body.price || !req.body.category) {
     res.status(400).send({
       message: "Content cannot be empty!"
     });
   }
 
   const glasses = {
-    color: req.body.color,
-    glass: req.body.glass,
-    mount: req.body.mount,
     price: req.body.price,
     category: req.body.category,
     stock: req.body.stock,
@@ -64,9 +61,6 @@ exports.update = async (req, res) => {
     let id = req.params.id;
     console.log(req.body);
     let glasses = {
-      color: req.body.color,
-      glass: req.body.glass,
-      mount: req.body.mount,
       price: req.body.price,
       category: req.body.category,
       stock: req.body.stock,

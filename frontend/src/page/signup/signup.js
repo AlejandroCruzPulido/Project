@@ -1,6 +1,8 @@
+// signup.js
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./signup.css"; // Import the CSS file
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -27,10 +29,11 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="container">
+      <h1>Impresioname</h1>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input type="text" name="name" onChange={handleChange} required />
+        <label>Username:</label>
+        <input type="text" name="username" onChange={handleChange} required />
 
         <label>Email:</label>
         <input type="email" name="email" onChange={handleChange} required />
