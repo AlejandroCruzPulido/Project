@@ -7,9 +7,9 @@ const utils = require('./utils');
 function generateToken(user) {
   if (!user) return null;
 
-  const { id, name, email, role } = user;
+  const { id, username, name, surname, email, password, role } = user;
 
-  return jwt.sign({ id, name, email, role }, process.env.JWT_SECRET, {
+  return jwt.sign({ id, username, name, surname, email, password, role }, process.env.JWT_SECRET, {
     expiresIn: 60 * 60 * 24
   });
 }
@@ -17,9 +17,9 @@ function generateToken(user) {
 function getCleanUser(user) {
   if (!user) return null;
 
-  const { id, name, email, role } = user;
+  const { id, username, name, surname, email, password, role } = user;
 
-  return { id, name, email, role };
+  return { id, username, name, surname, email, password, role };
 }
 
 module.exports = {

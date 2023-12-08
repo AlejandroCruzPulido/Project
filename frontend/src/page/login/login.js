@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./login.css"; 
+import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,6 +18,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8080/api/users/signin", formData);
+      const { access_token } = response.data;
+
+      localStorage.setItem("token", access_token);
+
       console.log(response.data);
       navigate("/home");
     } catch (error) {

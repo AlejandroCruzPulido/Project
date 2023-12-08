@@ -24,8 +24,10 @@ db.sequelize.sync().then(() => {
   console.log("Database synchronized.");
 });
 
-app.use(function (req, res, next) {
+app.use(async function (req, res, next) {
   const token = req.headers['authorization'];
+  console.log('Token from client:', token);
+  
   if (!token) return next();
 
   if (req.headers.authorization.indexOf('Basic ') === 0) {
@@ -39,16 +41,36 @@ app.use(function (req, res, next) {
     return next();
   }
 
-  jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET, function (err, user) {
+  jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET, async function (err, user) {
     if (err) {
+      console.error('JWT Verification Error:', err); 
       return res.status(401).json({
         error: true,
-        message: "Invalid user."
+        message: "Invalid user.",
+        details: err.message,
       });
-    } else {
+    }
+
+    try {
+      const foundUser = await db.users.findByPk(user.id);
+      if (!foundUser) {
+        return res.status(401).json({
+          error: true,
+          message: "User not found in the database.",
+        });
+      }
+
       req.user = user;
       req.token = token;
+      console.log('Verified Token:', token); 
       next();
+    } catch (dbError) {
+      console.error("Database error:", dbError);
+      return res.status(500).json({
+        error: true,
+        message: "Error retrieving user data from the database.",
+        details: dbError.message,
+      });
     }
   });
 });

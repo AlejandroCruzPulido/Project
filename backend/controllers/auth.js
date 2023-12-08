@@ -1,4 +1,3 @@
-// auth.js
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require("../models");
@@ -23,9 +22,13 @@ exports.signin = (req, res) => {
 
     const token = utils.generateToken(data);
     const userObj = utils.getCleanUser(data);
+
+    console.log('Generated Token:', token); 
+
     return res.json({ user: userObj, access_token: token });
   })
   .catch(err => {
+    console.error('Signin Error:', err); 
     res.status(500).send({
       message: err.message || "Some error occurred while signing in."
     });
