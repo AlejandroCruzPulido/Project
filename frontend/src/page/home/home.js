@@ -2,10 +2,10 @@ import "./home.css";
 import React, { useState, useEffect } from 'react';
 import Navigation from '../../components/navigation/navigation';
 import { Icon } from '@iconify/react';
-import ImageSlider1 from '../../images/Captura de pantalla (72).png';
-import ImageSlider2 from '../../images/Captura de pantalla (73).png';
-import ImageSlider3 from '../../images/Captura de pantalla (74).png';
-import logo from '../../images/logo.jpg';
+import ImageSlider1 from '../../images/model1.png';
+import ImageSlider2 from '../../images/model2.png';
+import ImageSlider3 from '../../images/model3.png';
+import logo from '../../images/logo.png';
 
 function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -38,12 +38,13 @@ function Home() {
             <Icon icon="ion:reorder-three-outline"/>
           </div>
           <div className="title">Impresioname</div>
-          <div className="cart-icon">Icon of Carry</div>
+          <div className="cart-icon">
+            <Icon icon="ant-design:shopping-cart-outlined" />
+          </div>
         </header>
         <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
         <div className="main-content">
           <img src={logo} className='Logo' alt="Logo" />
-          <img src='' alt='Captura de pantalla' />
           <div className="image-slider">
             {images.map((image, index) => (
               <img

@@ -17,7 +17,7 @@ exports.create = (req, res) => {
     surname: req.body.surname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password),
-    role: req.body.role
+    role: req.body.role || "Cliente"
   };
 
   Users.create(user)

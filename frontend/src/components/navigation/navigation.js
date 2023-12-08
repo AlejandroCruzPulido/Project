@@ -6,8 +6,6 @@ import { Icon } from '@iconify/react';
 const Navigation = ({ toggleMenu, handleToggleMenu }) => {
   const menuItems = [
     { name: 'Glasses', path: '/glasses' },
-    { name: 'Customize Glasses', path: '/customize-glasses' },
-    { name: 'Contact Us', path: '/contact-us' },
     { name: 'Account', path: '/account' }
   ];
   const socialMedia = [
