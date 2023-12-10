@@ -1,12 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Glasses = sequelize.define("glasses", {
-      color: {
-        type: Sequelize.STRING
-      },
-      glass: {
-        type: Sequelize.STRING
-      },
-      mount: {
+      name: {
         type: Sequelize.STRING
       },
       price: {

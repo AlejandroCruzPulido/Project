@@ -1,0 +1,71 @@
+.glasses-detail-page {
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+  .glasses-detail-page header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .glasses-detail-page .back-icon {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .glasses-detail-page .title {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .glasses-detail-page .cart-icon {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .glasses-detail-page .content {
+    text-align: center;
+    margin-top: 70px;
+  }
+  
+  .glasses-detail-page .glasses-detail {
+    margin-bottom: 20px;
+  }
+  
+  .glasses-detail-page .glasses-detail img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .glasses-detail-page .quantity-section {
+    margin-bottom: 20px;
+  }
+  
+  .glasses-detail-page .quantity-section label {
+    margin-right: 10px;
+  }
+  
+  .glasses-detail-page button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .glasses-detail-page .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  

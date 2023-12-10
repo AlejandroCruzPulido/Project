@@ -11,6 +11,8 @@ exports.create = (req, res) => {
 
   const directions = {
     direction: req.body.direction,
+    postal: req.body.postal,
+    province: req.body.province,
     id_user: req.body.id_user
   }
 
@@ -54,6 +56,8 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const direction = {
     direction: req.body.direction,
+    postal: req.body.postal,
+    province: req.body.province,
     id_user: req.body.id_user
   }
 

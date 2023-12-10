@@ -1,0 +1,35 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #9A9A9A;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.navigation.open {
+  transform: translateX(0);
+}
+
+.menu-item {
+  padding: 0px;
+  border-bottom: 1px solid #D9D9D9;
+  color: black;
+  text-decoration: none;
+}
+
+.close-icon {
+  background-color: #D9D9D9;
+}
+
+.social-media {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+} 
