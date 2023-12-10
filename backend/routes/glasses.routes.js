@@ -8,6 +8,8 @@ module.exports = app => {
 
   router.get("/", glasses.findAll);
 
+  router.get("/categories", glasses.findCategories); 
+
   router.get("/:id", glasses.findOne);
 
   router.put("/:id", upload.single('file'), glasses.update);

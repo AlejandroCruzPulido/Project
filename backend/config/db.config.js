@@ -18,21 +18,21 @@ const { Sequelize } = require('sequelize');
 
 module.exports = {
   development: {
-    email: process.env.MYSQL_USER,
+    username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.DB_HOST,
     dialect: 'mysql'
   },
   test: {
-    email: process.env.MYSQL_USER,
+    username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.DB_HOST,
     dialect: 'mysql'
   },
   production: {
-    email: process.env.MYSQL_USER,
+    username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     host: process.env.DB_HOST,

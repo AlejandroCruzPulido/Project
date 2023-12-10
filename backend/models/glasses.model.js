@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Glasses = sequelize.define("glasses", {
+      name: {
+        type: Sequelize.STRING
+      },
       price: {
         type: Sequelize.INTEGER
       },
