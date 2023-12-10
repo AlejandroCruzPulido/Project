@@ -6,7 +6,8 @@ import { Icon } from '@iconify/react';
 const Navigation = ({ toggleMenu, handleToggleMenu }) => {
   const menuItems = [
     { name: 'Glasses', path: '/glasses' },
-    { name: 'Account', path: '/account' }
+    { name: 'Account', path: '/account' },
+    { name: 'Home', path: '/home' }
   ];
   const socialMedia = [
     { icon: 'ion-logo-instagram', url: 'https://www.instagram.com' },
