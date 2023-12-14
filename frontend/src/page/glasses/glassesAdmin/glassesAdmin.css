@@ -1,8 +1,10 @@
 .glasses-page {
-  background-color: #9A9A9A;
   padding: 20px;
-  height: 100vh;
+  height: 99%;
+  width: 95%;
   margin: 0; 
+  background-color: #fff;
+  overflow-x: hidden;
 }
 
 .glasses-page header {
@@ -15,14 +17,13 @@
   top: 0;
   left: 0; 
   width: 100%;
-  z-index: 1000;
   margin: 0; 
 }
 
 .glasses-page .menu-icon {
   padding: 5px;
   margin: 5px;
-  background-color: #9A9A9A;
+  background-color: #fff;
 }
 
 .glasses-page .cart-icon {
@@ -33,7 +34,7 @@
 }
 
 .glasses-page .content {
-  padding: 20px;
+  padding: 5px;
   text-align: center;
   background-color: #ffffff;
   margin-top: 70px;
@@ -90,12 +91,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: #fff;
+
 }
 
 .glasses-page .glasses-item {
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
+  background-color: #fff;
+
 }
 
 .glasses-page .glasses-item img {
@@ -103,4 +108,6 @@
   max-width: 200px;
   height: auto;
   cursor: pointer;
+  background-color: #fff;
+
 }

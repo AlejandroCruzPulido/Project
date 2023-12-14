@@ -4,7 +4,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import GlassesDetail from './glassesDetail';
 import './glasses.css';
-import Navigation from '../../components/navigation/navigation';
+import Navigation from '../../../components/navigation/navigation';
 
 
 const Glasses = () => {

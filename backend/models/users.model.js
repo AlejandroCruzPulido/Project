@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM("Client", "Admin", "SuperAdmin")
       }
     }, {timestamps: false});
     return Users;

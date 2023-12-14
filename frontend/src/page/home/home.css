@@ -1,33 +1,27 @@
-body {
-  background-color: #9A9A9A !important;
-  margin: 1em;
-}
-
 .app {
   background-color: #ffffff;
-  margin: 5px auto; 
-  max-width: 100%; 
+  margin: 5px auto;
+  max-width: 60%;
   z-index: 1;
-  padding: 5px;
+  padding: 60px;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 40%;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 40px;
+  z-index: 2;
 }
 
 .menu-icon {
   padding: 5px;
   margin: 5px;
-  background-color: #9A9A9A;
 }
 
 .cart-icon {
   padding: 5px;
   margin: 5px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
 }
@@ -74,11 +68,14 @@ header {
 
 .popular-glasses {
   margin-top: 20px;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .glasses-item {
-  margin-bottom: 20px;
+  margin: 0 10px 20px;
+  text-align: center;
 }
 
 .Logo {
@@ -98,57 +95,40 @@ header {
 @media only screen and (min-width: 768px) {
   .content {
     padding: 30px;
-    padding-right: 100px;
-    padding-left: 100px;
   }
 
   header {
     padding: 10px 30px;
-    display: grid; 
-    grid-template-columns: 1fr auto 1fr; 
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
   }
 
   .menu-icon {
     font-size: 24px;
-    margin-right: 10px; 
-  }
-
-  .title {
-    text-align: center;
   }
 
   .cart-icon {
     font-size: 24px;
-    margin-left: 10px; 
-    justify-self: end; 
   }
 }
 
 @media only screen and (min-width: 1000px) {
   .content {
-    padding: 30px;
-    padding-right: 300px;
-    padding-left: 300px;
+    padding-right: 100px;
+    padding-left: 100px;
   }
 
   header {
     padding: 10px 50px;
-    grid-template-columns: 1fr auto 1fr; 
   }
 
   .menu-icon {
     font-size: 30px;
-    margin-right: 20px; 
-  }
-
-  .title {
-    text-align: center;
+    margin-right: 20px;
   }
 
   .cart-icon {
     font-size: 30px;
-    margin-left: 20px; 
-    justify-self: end; 
+    margin-left: 20px;
   }
 }

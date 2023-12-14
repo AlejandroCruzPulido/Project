@@ -3,6 +3,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs'); 
 require('dotenv').config();
 
 const app = express();
@@ -20,13 +21,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./models");
 
-db.sequelize.sync().then(() => {
+db.sequelize.sync({force:true}).then(async () => {
   console.log("Database synchronized.");
+
+  try {
+    const existingSuperAdmin = await db.users.findOne({
+      where: { role: "SuperAdmin" }
+    });
+
+    if (!existingSuperAdmin) {
+      const superAdmin = {
+        username: "superadmin",
+        email: "superadmin@gmail.com",
+        password: bcrypt.hashSync("1234"),
+        role: "SuperAdmin"
+      };
+
+      await db.users.create(superAdmin);
+      console.log("SuperAdmin user created.");
+    }
+  } catch (error) {
+    console.error("Error creating SuperAdmin user:", error);
+  }
 });
 
 app.use(async function (req, res, next) {
-  const token = req.headers['authorization'];
-  console.log('Token from client:', token);
+  let token = req.headers['authorization'];
   
   if (!token) return next();
 
@@ -41,7 +61,9 @@ app.use(async function (req, res, next) {
     return next();
   }
 
-  jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET, async function (err, user) {
+  token = token.replace('Bearer ', '');
+
+  jwt.verify(token, process.env.JWT_SECRET, async function (err, user) {
     if (err) {
       console.error('JWT Verification Error:', err); 
       return res.status(401).json({
@@ -82,6 +104,11 @@ require("./routes/contain.routes")(app);
 require("./routes/users.routes")(app);
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

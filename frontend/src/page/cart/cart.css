@@ -1,5 +1,5 @@
 .cart {
-  background-color: #dddddd;
+  background-color: #ffffff;
 }
 
 .content-container {
@@ -7,6 +7,7 @@
   padding: 20px;
   background-color: #ffffff;
   max-width: 800px;
+  text-align: center;
 }
 
 header {
@@ -78,4 +79,16 @@ header {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.order-summary {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.order-summary h3 {
+  margin-bottom: 10px;
 }

@@ -1,4 +1,4 @@
-body {
+.login {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -15,15 +15,18 @@ body {
   margin: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
 }
 
-h2 {
+h1 {
   text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 label {
@@ -36,6 +39,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 16px;
+  width: 100%; 
 }
 
 button {
@@ -47,6 +51,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
   margin-bottom: 10px;
+  width: 100%; 
 }
 
 button:hover {

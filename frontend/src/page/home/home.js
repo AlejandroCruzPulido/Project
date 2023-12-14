@@ -41,8 +41,8 @@ function Home() {
           <div className="cart-icon">
             <Icon icon="ant-design:shopping-cart-outlined" />
           </div>
+          <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
         </header>
-        <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
         <div className="main-content">
           <img src={logo} className='Logo' alt="Logo" />
           <div className="image-slider">

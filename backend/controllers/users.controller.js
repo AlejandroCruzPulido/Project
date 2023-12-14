@@ -3,53 +3,50 @@ const Users = db.users;
 const bcrypt = require('bcryptjs');
 const utils = require("../utils"); 
 
-exports.create = (req, res) => {
-  if (!req.body.username || !req.body.email || !req.body.password) {
-    res.status(400).send({
-      message: "Content cannot be empty!"
-    });
-    return;
-  }
-
-  const user = {
-    username: req.body.username,
-    name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password),
-    role: req.body.role || "Cliente"
-  };
-
-  Users.create(user)
-    .then(data => {
-      const token = utils.generateToken(data);
-      const userObj = utils.getCleanUser(data);
-      return res.json({ user: userObj, access_token: token });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User."
+exports.create = async (req, res) => {
+  try{
+    if (!req.body.username || !req.body.email || !req.body.password) {
+      res.status(400).send({
+        message: "Content cannot be empty!"
       });
+      return;
+    }
+
+    const userRole = req.body.role || "Client";
+
+    const user = {
+      username: req.body.username,
+      name: req.body.name,
+      surname: req.body.surname,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password),
+      role: userRole
+    };
+
+    const data = await Users.create(user);
+    const token = utils.generateToken(data);
+    const userObj = utils.getCleanUser(data);
+    res.json({ user: userObj, access_token: token });
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res.status(500).send({
+      message: error.message || "Some error occurred while creating the User."
     });
+  }
 };
 
-// users.controller.js
 exports.findAll = async (req, res) => {
   try {
     console.log("Finding all users...");
     
-    // Verificamos si el middleware de autenticación está pasando correctamente.
     console.log("Authenticated user:", req.user);
 
-    // Consultamos todos los usuarios.
     const data = await Users.findAll();
     
-    // Enviamos los datos como respuesta.
     res.send(data);
   } catch (error) {
     console.error("Error in protected route:", error);
 
-    // Verificamos el tipo de error y enviamos una respuesta adecuada.
     if (error.name === "JsonWebTokenError") {
       res.status(401).json({
         error: true,
@@ -63,7 +60,6 @@ exports.findAll = async (req, res) => {
     }
   }
 };
-
 
 exports.findOne = (req, res) => {
   const id = req.params.id;
@@ -104,27 +100,36 @@ exports.findCurrentUser = (req, res) => {
     });
 };
 
-exports.update = (req, res) => {
-  const user = {
-    username: req.body.name,
-    name: req.body.name,
-    surname: req.body.name,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password),
-    role: req.body.role
-  };
+exports.update = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const existingUser = await Users.findByPk(userId);
 
-  Users.update(user, { 
-    where: { id: req.params.id } 
-  })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || `Some error occurred while updating the user with id=${req.params.id}`
+    if (!existingUser) {
+      return res.status(404).send({
+        message: `Cannot find User with id=${userId}.`,
       });
+    }
+
+    const updatedUser = {
+      username: req.body.username || existingUser.username,
+      name: req.body.name || existingUser.name,
+      surname: req.body.surname || existingUser.surname,
+      email: req.body.email || existingUser.email,
+      password: req.body.newPassword
+        ? bcrypt.hashSync(req.body.newPassword)
+        : existingUser.password,
+      role: req.body.role || existingUser.role,
+    };
+
+    await Users.update(updatedUser, { where: { id: userId } });
+
+    res.send(updatedUser);
+  } catch (error) {
+    res.status(500).send({
+      message: `Error updating user with id=${req.params.id}: ${error.message}`,
     });
+  }
 };
 
 exports.delete = (req, res) => {

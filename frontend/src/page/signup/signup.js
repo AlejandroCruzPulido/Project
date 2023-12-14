@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./signup.css"; 
+import "./signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -28,20 +28,22 @@ const Signup = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Impresioname</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" onChange={handleChange} required />
+    <div className="signup">
+      <div className="container">
+        <h1>Impresioname</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Username:</label>
+          <input type="text" name="username" onChange={handleChange} required />
 
-        <label>Email:</label>
-        <input type="email" name="email" onChange={handleChange} required />
+          <label>Email:</label>
+          <input type="email" name="email" onChange={handleChange} required />
 
-        <label>Password:</label>
-        <input type="password" name="password" onChange={handleChange} required />
+          <label>Password:</label>
+          <input type="password" name="password" onChange={handleChange} required />
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
     </div>
   );
 };

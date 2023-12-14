@@ -18,32 +18,39 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8080/api/users/signin", formData);
-      const { access_token } = response.data;
+      const { access_token, role } = response.data;
 
       localStorage.setItem("token", access_token);
 
-      console.log(response.data);
-      navigate("/home");
+      if (role === "SuperAdmin") {
+        navigate("/navigation-home-superadmin");
+      } else if (role === "Admin") {
+        navigate("/navigation-home-admin");
+      } else {
+        navigate("/home")
+      }
     } catch (error) {
       console.error("Error signing in:", error.message);
     }
   };
 
   return (
-    <div className="container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" onChange={handleChange} required />
+    <div className="login">
+      <div className="container">
+        <h1>Impresioname</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Email:</label>
+          <input type="text" name="email" onChange={handleChange} required />
 
-        <label>Password:</label>
-        <input type="password" name="password" onChange={handleChange} required />
+          <label>Password:</label>
+          <input type="password" name="password" onChange={handleChange} required />
 
-        <button type="submit">Log In</button>
-        <button type="button" onClick={() => navigate("/signup")}>
-          Sign Up
-        </button>
-      </form>
+          <button type="submit">Log In</button>
+          <button type="button" onClick={() => navigate("/signup")}>
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
