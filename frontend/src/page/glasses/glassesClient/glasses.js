@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { Link, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import GlassesDetail from './glassesDetail'; 
+import GlassesDetail from './glassesDetail';
 import './glasses.css';
+import Navigation from '../../../components/navigation/navigation';
+
 
 const Glasses = () => {
   const [glasses, setGlasses] = useState([]);
@@ -11,6 +13,7 @@ const Glasses = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   useEffect(() => {
     let url;
@@ -19,7 +22,7 @@ const Glasses = () => {
     } else {
       url = `http://localhost:8080/api/glasses?category=${selectedCategory}&search=${searchTerm}`;
     }
-  
+
     axios.get(url)
       .then(response => {
         setGlasses(response.data);
@@ -37,20 +40,22 @@ const Glasses = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
   return (
     <div className="glasses-page">
       <header>
-        <div className="menu-icon">
-          <Link to="/navigation">
-            <Icon icon="ion:reorder-three-outline" />
-          </Link>
+        <div className="menu-icon" onClick={handleToggleMenu}>
+          <Icon icon="ion:reorder-three-outline" />
         </div>
         <div className="title">Impresioname</div>
         <div className="cart-icon">
           <Icon icon="ant-design:shopping-cart-outlined" />
         </div>
       </header>
-
+      <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
       <div className="content">
         <div className="filters">
           <div className="search-bar">
@@ -92,7 +97,7 @@ const Glasses = () => {
             </Link>
           ))}
         </div>
-        
+
         <Routes>
           <Route path="/glasses/:id" element={<GlassesDetail />} />
         </Routes>

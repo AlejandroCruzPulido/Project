@@ -3,7 +3,7 @@ const Direction = db.directions;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-  if (!req.body.direction || !req.body.id_user) {
+  if (!req.body.direction) {
     res.status(400).send({
       message: "Content cannot be empty!"
     });

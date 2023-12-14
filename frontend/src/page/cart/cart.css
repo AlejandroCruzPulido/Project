@@ -1,0 +1,94 @@
+.cart {
+  background-color: #ffffff;
+}
+
+.content-container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  max-width: 800px;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.menu-icon {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-icon {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.glasses-section {
+  margin-top: 70px;
+}
+
+.added-glasses {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.glasses-info {
+  display: flex;
+  align-items: center;
+}
+
+.glasses-image {
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.glasses-details {
+  flex: 1;
+}
+
+.total-section {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.total-section p {
+  margin: 0;
+}
+
+.total-section button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-summary {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.order-summary h3 {
+  margin-bottom: 10px;
+}

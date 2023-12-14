@@ -1,19 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navigation.css';
+import './navigationSuperAdmin.css';
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router-dom';
 
-const Navigation = ({ toggleMenu, handleToggleMenu }) => {
+const NavigationSuperAdmin = ({ toggleMenu, handleToggleMenu }) => {
+  const navigate = useNavigate();
+
   const menuItems = [
-    { name: 'Glasses', path: '/glasses' },
-    { name: 'Account', path: '/account' },
-    { name: 'Home', path: '/home' }
+    { name: 'Glasses', path: '/glasses-admin' },
+    { name: 'Users', path: '/users-superadmin' },
   ];
   const socialMedia = [
     { icon: 'ion-logo-instagram', url: 'https://www.instagram.com' },
     { icon: 'ion-logo-twitter', url: 'https://www.twitter.com' },
     { icon: 'ion-logo-facebook', url: 'https://www.facebook.com' }
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
 
   return (
     <div className={`navigation ${toggleMenu ? 'open' : ''}`}>
@@ -25,6 +32,7 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
           {item.name}
         </Link>
       ))}
+
       <div className="social-media">
         {socialMedia.map((item, index) => (
           <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
@@ -32,8 +40,9 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
           </a>
         ))}
       </div>
+      <button className="logout-button" onClick={handleLogout}></button>
     </div>
   );
 };
 
-export default Navigation;
+export default NavigationSuperAdmin;

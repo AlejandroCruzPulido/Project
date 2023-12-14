@@ -1,0 +1,74 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin-right: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+.user-card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.user-details {
+  margin-top: 10px; 
+  text-align: center; 
+}
+
+.user-details span {
+  margin-bottom: 4px;
+}
+
+.user-actions button {
+  margin-top: 8px;
+}
+
+@media only screen and (min-width: 600px) {
+  .user-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-details {
+    margin-top: 0; 
+    text-align: left; 
+  }
+
+  .user-actions button {
+    margin-top: 0;
+    margin-left: 8px;
+  }
+}

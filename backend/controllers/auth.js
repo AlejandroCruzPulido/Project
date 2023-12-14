@@ -16,23 +16,24 @@ exports.signin = (req, res) => {
   }
 
   User.findOne({ where: { email: user } })
-  .then(data => {
-    const result = bcrypt.compareSync(pwd, data.password);
-    if (!result) return res.status(401).send('Password not valid!');
+    .then(data => {
+      const result = bcrypt.compareSync(pwd, data.password);
+      if (!result) return res.status(401).send('Password not valid!');
 
-    const token = utils.generateToken(data);
-    const userObj = utils.getCleanUser(data);
+      const token = utils.generateToken(data);
+      const userObj = utils.getCleanUser(data);
+      const userRole = data.role;
 
-    console.log('Generated Token:', token); 
+      console.log('Generated Token:', token); 
 
-    return res.json({ user: userObj, access_token: token });
-  })
-  .catch(err => {
-    console.error('Signin Error:', err); 
-    res.status(500).send({
-      message: err.message || "Some error occurred while signing in."
+      return res.json({ user: userObj, access_token: token, role: userRole });
+    })
+    .catch(err => {
+      console.error('Signin Error:', err); 
+      res.status(500).send({
+        message: err.message || "Some error occurred while signing in."
+      });
     });
-  });
 };
 
 exports.isAuthenticated = (req, res, next) => {
@@ -45,6 +46,7 @@ exports.isAuthenticated = (req, res, next) => {
   }
 
   jwt.verify(token, process.env.JWT_SECRET, function (err, user) {
+    console.log(user)
     if (err) return res.status(401).json({
       error: true,
       message: "Invalid token."

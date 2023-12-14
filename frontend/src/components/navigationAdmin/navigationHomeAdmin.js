@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navigation.css';
+import './navigationAdmin.css';
 import { Icon } from '@iconify/react';
 
-const Navigation = ({ toggleMenu, handleToggleMenu }) => {
+const NavigationHomeAdmin = () => {
   const menuItems = [
-    { name: 'Glasses', path: '/glasses' },
-    { name: 'Account', path: '/account' },
-    { name: 'Home', path: '/home' }
+    { name: 'Glasses', path: '/glasses-admin' },
+    { name: 'Users', path: '/users-admin' },
   ];
   const socialMedia = [
     { icon: 'ion-logo-instagram', url: 'https://www.instagram.com' },
@@ -16,8 +15,8 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
   ];
 
   return (
-    <div className={`navigation ${toggleMenu ? 'open' : ''}`}>
-      <div className="close-icon" onClick={handleToggleMenu}>
+    <div className="navigation open">
+      <div className="close-icon">
         <Icon icon="ion:close-outline"/>
       </div>
       {menuItems.map((item, index) => (
@@ -36,4 +35,4 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
   );
 };
 
-export default Navigation;
+export default NavigationHomeAdmin;
