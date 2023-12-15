@@ -137,7 +137,7 @@ Description: PWAs are web applications that provide a native app-like experience
 - May not provide as seamless a user experience as native apps.
 - Limited support on older browsers and devices.
 
-My application is do it in Web Apps I think, because the app is used for an website to buys glasses, there are some examples of the advantages of my technology than the another:
+My I think what my application Web App, because the app is used for an website with html, there are some examples of the advantages of my technology than the another:
 
 - Cross-Platform Compatibility:
 Web apps can run on any device with a compatible web browser, making them inherently cross-platform. Users can access the app on various devices without the need for platform-specific versions.
@@ -147,6 +147,3 @@ Users can access web apps instantly without the need for installation from an ap
 
 - Easier Maintenance and Updates:
 Web apps can be updated centrally on the server, ensuring that all users instantly receive the latest version. This simplifies the maintenance process and ensures a consistent experience for all users.
-
-- Cost-Effective Development:
-Developing web apps can be more cost-effective as developers can use common web technologies (HTML, CSS, JavaScript) and a single codebase. This contrasts with native apps that require separate codebases for each platform.
