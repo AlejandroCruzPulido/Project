@@ -2,22 +2,22 @@
 This project is intended to make a website for selling glasses
 
 # Relation of the tables:
-Tabla users:
+Users table:
 The users table is to store the users that people will be created to access the application.
 
-Tabla directions:
+Directions table:
 The address table stores the addresses of the users, it is made so that 1 user can have more than 1 address but 1 address can only have 1 user.
 
-Tabla buys:
+Buys table:
 The purchases table stores the purchases made by the user, given that 1 user can make several purchases but 1 purchase can only be made by 1 user.
 
-Tabla glasses:
+Glasses table:
 The glasses table stores the glasses that exist in the application, which are the products that are sold.
 
-Tabla contain:
+Contain table:
 The contain table stores the purchases made along with the glasses that are purchased, to know in which purchase the specific glasses were purchased.
 
-# Pila tecnológica:
+# Technology stack
 Frontend: Reactjs
 
 Backend: Express
