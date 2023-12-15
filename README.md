@@ -1,5 +1,5 @@
 # Impresioname
-This project is intended to make a website for selling glasses
+This project is intended to make a website for selling glasses order by the ITC company for realize 
 
 # Relation of the tables:
 Users table:
