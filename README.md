@@ -85,3 +85,68 @@ To perform the test in the backend, we go to the backend path and execute the fo
 npx jest tests/user.test.js --forceExit
 ```
 With that, he performs a test on what would happen if we do not pass the address data but if we pass the rest, what happens is that it fails since in the backend that data is essential
+
+# Figma
+Link to see the figma
+```
+https://www.figma.com/file/ZRGAv6H8ir2uBAHutUZnm7/Glasses?type=design&node-id=0%3A1&mode=design&t=IdDadY4RKTEHJqSc-1
+```
+
+# Technologies
+## Native Apps:
+Description: Native apps are developed specifically for a particular platform or operating system, such as iOS or Android. They are written in languages that are native to the platform, like Swift or Objective-C for iOS and Java or Kotlin for Android.
+
+### Advantages:
+- High performance and responsiveness.
+- Access to platform-specific features and APIs.
+- Enhanced user experience.
+### Disadvantages:
+- Separate codebases for different platforms.
+- Higher development cost and time.
+
+## Hybrid Apps:
+Description: Hybrid apps use web technologies (HTML, CSS, JavaScript) and are wrapped in a native container, allowing them to run on multiple platforms. They often leverage frameworks like Cordova or React Native.
+### Advantages:
+- Code reusability across platforms.
+- Faster development compared to native apps.
+- Access to some native features.
+### Disadvantages:
+- Performance may not match native apps.
+- Limited access to certain native APIs.
+- May have a less polished look and feel.
+
+## Web Apps:
+Description: Web apps are applications accessed through a web browser and run on a web server. They are platform-independent and do not need to be installed on a device.
+### Advantages:
+- Cross-platform compatibility.
+- No need for installation.
+- Easier maintenance and updates.
+### Disadvantages:
+- Limited access to device-specific features.
+- Requires a stable internet connection.
+- Potentially slower performance compared to native apps.
+
+## Progressive Web Apps (PWAs):
+Description: PWAs are web applications that provide a native app-like experience. They leverage modern web technologies and service workers to offer features like offline functionality, push notifications, and improved performance.
+### Advantages:
+- Cross-platform compatibility.
+- Offline functionality.
+- Improved performance compared to traditional web apps.
+### Disadvantages:
+- Limited access to certain native APIs.
+- May not provide as seamless a user experience as native apps.
+- Limited support on older browsers and devices.
+
+My application is do it in Web Apps I think, because the app is used for an website to buys glasses, there are some examples of the advantages of my technology than the another:
+
+- Cross-Platform Compatibility:
+Web apps can run on any device with a compatible web browser, making them inherently cross-platform. Users can access the app on various devices without the need for platform-specific versions.
+
+- No Installation Required:
+Users can access web apps instantly without the need for installation from an app store. This can lead to a more straightforward user experience, eliminating the barrier of app downloads.
+
+- Easier Maintenance and Updates:
+Web apps can be updated centrally on the server, ensuring that all users instantly receive the latest version. This simplifies the maintenance process and ensures a consistent experience for all users.
+
+- Cost-Effective Development:
+Developing web apps can be more cost-effective as developers can use common web technologies (HTML, CSS, JavaScript) and a single codebase. This contrasts with native apps that require separate codebases for each platform.
