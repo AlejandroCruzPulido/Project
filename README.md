@@ -147,3 +147,27 @@ Users can access web apps instantly without the need for installation from an ap
 
 - Easier Maintenance and Updates:
 Web apps can be updated centrally on the server, ensuring that all users instantly receive the latest version. This simplifies the maintenance process and ensures a consistent experience for all users.
+
+# Usability
+### Clear navigation:
+A well-organized and easy-to-understand navigation menu.
+Logical and consistent links that clearly indicate where they will lead.
+
+### Responsive Design:
+A website that adapts effectively to different screen sizes, ensuring a good experience on both desktop and mobile devices.
+
+## Fast charge:
+Pages that load quickly to avoid loss of user interest.
+
+# Accessibility
+### Color contrast:
+Ensure good contrast between text and background to improve readability, benefiting people with visual disabilities or difficulties distinguishing colors.
+
+### Headers and page structure:
+Use HTML headers (h1, h2, h3, etc.) in a hierarchical manner to structure the content and facilitate navigation for people with visual or cognitive disabilities.
+
+### Descriptive links:
+Write descriptive link text that provides information about the destination of the link, rather than using generic text like "click here."
+
+### Accessible keyboard:
+Ensure that all page functions are accessible via keyboard to benefit people with motor disabilities who cannot use a mouse.
