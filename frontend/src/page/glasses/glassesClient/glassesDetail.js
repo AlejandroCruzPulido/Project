@@ -87,7 +87,7 @@ const GlassesDetail = () => {
         )}
 
         <button onClick={handleAddToCart}>Add to Cart</button>
-
+        <a href='http://127.0.0.1:5500/frontend/public/html/Glasses1.html'>Help</a>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
     </div>

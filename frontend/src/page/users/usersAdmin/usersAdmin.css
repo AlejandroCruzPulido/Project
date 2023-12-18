@@ -1,14 +1,10 @@
-body {
-  font-family: 'Arial', sans-serif;
-}
-
-.container {
+.admin {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.search-container {
+.search-admin {
   margin-bottom: 20px;
 }
 
@@ -22,18 +18,18 @@ button {
   cursor: pointer;
 }
 
-.content {
+.content-admin {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.header {
+.header-admin {
   text-align: center;
   margin-bottom: 20px; 
 }
 
-.user-card {
+.user-card-admin {
   border: 1px solid #ddd;
   padding: 12px;
   margin-bottom: 10px;
@@ -42,33 +38,39 @@ button {
   align-items: center; 
 }
 
-.user-details {
+.user-details-admin {
   margin-top: 10px; 
   text-align: center; 
 }
 
-.user-details span {
+.user-details-admin span {
   margin-bottom: 4px;
 }
 
-.user-actions button {
+.user-actions-admin button {
   margin-top: 8px;
 }
 
 @media only screen and (min-width: 600px) {
-  .user-card {
+  .user-card-admin {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  .user-details {
+  .user-details-admin {
     margin-top: 0; 
     text-align: left; 
   }
 
-  .user-actions button {
+  .user-actions-admin button {
     margin-top: 0;
     margin-left: 8px;
   }
+}
+
+.title-admin {
+  text-align: center;
+  margin-right: 115px;
+  justify-content: center;
 }

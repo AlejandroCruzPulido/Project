@@ -84,16 +84,16 @@ const UserSuperAdmin = () => {
 
   return (
     <div className={`app ${toggleMenu ? 'menu-open' : ''}`}>
-      <div className="content">
-        <header>
+      <div className="superadmin">
+        <header className='header-superadmin'>
           <div className="menu-icon" onClick={handleToggleMenu}>
             <span>☰</span>
           </div>
-          <div className="title">Admin Panel</div>
+          <div className="title-superadmin">Admin Panel</div>
         </header>
         <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
-        <div className="container">
-          <div className="search-container">
+        <div className="container-superadmin">
+          <div className="search-superadmin">
             <input
               type="text"
               placeholder="Search users..."
@@ -104,13 +104,13 @@ const UserSuperAdmin = () => {
           </div>
           <div>
             {users.map((user) => (
-              <div key={user.id} className="user-card">
-                <div className="user-details">
+              <div key={user.id} className="user-card-superadmin">
+                <div className="user-details-superadmin">
                   <span>{user.username}</span>
                   <br></br>
                   <span>{user.role}</span>
                 </div>
-                <div className="user-actions">
+                <div className="user-actions-superadmin">
                   <button onClick={() => handleUpdateRole(user.id)}>Update Role</button>
                   <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
                 </div>
@@ -119,6 +119,7 @@ const UserSuperAdmin = () => {
           </div>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
+        <a href='http://127.0.0.1:5500/frontend/public/html/Users1.html'>Help</a>
       </div>
     </div>
   );
