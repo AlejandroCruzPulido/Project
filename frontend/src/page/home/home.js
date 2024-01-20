@@ -6,6 +6,8 @@ import ImageSlider1 from '../../images/model1.png';
 import ImageSlider2 from '../../images/model2.png';
 import ImageSlider3 from '../../images/model3.png';
 import logo from '../../images/logo.png';
+import { Link } from 'react-router-dom';  
+
 
 function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -35,11 +37,13 @@ function Home() {
       <div className="content">
         <header>
           <div className="menu-icon" onClick={handleToggleMenu}>
-            <Icon icon="ion:reorder-three-outline"/>
+            <Icon icon="ion:reorder-three-outline" />
           </div>
           <div className="title">Impresioname</div>
           <div className="cart-icon">
-            <Icon icon="ant-design:shopping-cart-outlined" />
+            <Link to="/cart" className="cart-icon">
+              <Icon icon="ant-design:shopping-cart-outlined" />
+            </Link>
           </div>
           <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
         </header>
@@ -65,13 +69,8 @@ function Home() {
               ))}
             </div>
           </div>
-          <div className="popular-glasses">
-            <h2>Most Popular Glasses</h2>
-            <div className="glasses-item">
-              <img src="" alt="Popular glasses" />
-              <h3>Glasses</h3>
-              <p>Price: $100</p>
-            </div>
+          <div>
+            <a href='http://127.0.0.1:5500/frontend/public/html/Home.html'>Help</a>
           </div>
         </div>
       </div>

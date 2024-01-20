@@ -7,6 +7,7 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
   const menuItems = [
     { name: 'Glasses', path: '/glasses' },
     { name: 'Account', path: '/account' },
+    { name: 'Report', path: 'http://localhost:5488/templates/CdT20C7', external: true },
     { name: 'Home', path: '/home' }
   ];
   const socialMedia = [
@@ -21,9 +22,17 @@ const Navigation = ({ toggleMenu, handleToggleMenu }) => {
         <Icon icon="ion:close-outline"/>
       </div>
       {menuItems.map((item, index) => (
-        <Link key={index} to={item.path} className="menu-item">
-          {item.name}
-        </Link>
+        <React.Fragment key={index}>
+          {item.external ? (
+            <a href={item.path} target="_blank" rel="noopener noreferrer" className="menu-item">
+              {item.name}
+            </a>
+          ) : (
+            <Link to={item.path} className="menu-item">
+              {item.name}
+            </Link>
+          )}
+        </React.Fragment>
       ))}
       <div className="social-media">
         {socialMedia.map((item, index) => (

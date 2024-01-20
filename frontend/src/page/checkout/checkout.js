@@ -130,6 +130,7 @@ const Checkout = () => {
           </label>
           <button onClick={handlePlaceOrder}>Place Order</button>
         </div>
+        <a href='http://127.0.0.1:5500/frontend/public/html/Checkout.html'>Help</a>
       </div>
     </div>
   );

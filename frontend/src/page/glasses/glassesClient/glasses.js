@@ -52,7 +52,9 @@ const Glasses = () => {
         </div>
         <div className="title">Impresioname</div>
         <div className="cart-icon">
-          <Icon icon="ant-design:shopping-cart-outlined" />
+          <Link to="/cart" className="cart-icon">
+            <Icon icon="ant-design:shopping-cart-outlined" />
+          </Link>
         </div>
       </header>
       <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
@@ -86,18 +88,18 @@ const Glasses = () => {
         </div>
 
         <div className="glasses-list">
-          {glasses.map(gafa => (
-            <Link key={gafa.id} to={`/glasses/${gafa.id}`}>
+          {glasses.map(glasses => (
+            <Link key={glasses.id} to={`/glasses/${glasses.id}`}>
               <div className="glasses-item">
-                <img src={`http://localhost:8080/images/${gafa.image}`} alt={gafa.name} />
-                <h3>{gafa.name}</h3>
-                <p>Price: ${gafa.price}</p>
-                <p>Stock: {gafa.stock ? <Icon icon="bi:check-circle-fill" style={{ color: 'green' }} /> : <Icon icon="bi:x-circle-fill" style={{ color: 'red' }} />}</p>
+                <img src={`http://localhost:8080/images/${glasses.image}`} alt={glasses.name} />
+                <h3>{glasses.name}</h3>
+                <p>Price: ${glasses.price}</p>
+                <p>Stock: {glasses.stock ? <Icon icon="bi:check-circle-fill" style={{ color: 'green' }} /> : <Icon icon="bi:x-circle-fill" style={{ color: 'red' }} />}</p>
               </div>
             </Link>
           ))}
         </div>
-
+        <a href='http://127.0.0.1:5500/frontend/public/html/Glasses1.html'>Help</a>
         <Routes>
           <Route path="/glasses/:id" element={<GlassesDetail />} />
         </Routes>

@@ -1,10 +1,11 @@
-.container {
-  max-width: 800px;
+.superdamin {
   margin: 0 auto;
   padding: 20px;
+  text-align: center;
+  justify-content: center;
 }
 
-.search-container {
+.search-superdamin {
   margin-bottom: 20px;
 }
 
@@ -18,18 +19,18 @@ button {
   cursor: pointer;
 }
 
-.content {
+.content-superadmin {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
 
-.header {
+.header-superadmin {
   text-align: center;
   margin-bottom: 20px; 
 }
 
-.user-card {
+.user-card-superadmin {
   border: 1px solid #ddd;
   padding: 12px;
   margin-bottom: 10px;
@@ -38,32 +39,37 @@ button {
   align-items: center; 
 }
 
-.user-details {
+.user-details-superadmin {
   margin-top: 10px; 
   text-align: center; 
 }
 
-.user-details span {
+.user-details-superadmin span {
   margin-bottom: 4px;
 }
 
-.user-actions button {
+.user-actions-superadmin button {
   margin-top: 8px;
 }
 
+.title-superadmin {
+  text-align: center;
+  margin-right: auto;
+}
+
 @media only screen and (min-width: 600px) {
-  .user-card {
+  .user-card-superadmin {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  .user-details {
+  .user-details-superadmin {
     margin-top: 0; 
     text-align: left; 
   }
 
-  .user-actions button {
+  .user-actions-superadmin button {
     margin-top: 0;
     margin-left: 8px;
   }

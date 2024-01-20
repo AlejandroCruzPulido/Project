@@ -71,11 +71,11 @@ const UserAdmin = () => {
           <div className="menu-icon" onClick={handleToggleMenu}>
             <span>☰</span>
           </div>
-          <div className="title">Admin Panel</div>
+          <div className="title-admin">Admin Panel</div>
         </header>
         <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
-        <div className="container">
-          <div className="search-container">
+        <div className="admin">
+          <div className="search-admin">
             <input
               type="text"
               placeholder="Search users..."
@@ -86,12 +86,12 @@ const UserAdmin = () => {
           </div>
           <div>
             {users.map((user) => (
-              <div key={user.id} className="user-card">
-                <div className="user-details">
+              <div key={user.id} className="user-card-admin">
+                <div className="user-details-admin">
                   <span>{user.username}</span>
                   <span>{user.role}</span>
                 </div>
-                <div className="user-actions">
+                <div className="user-actions-admin">
                   <button onClick={() => handleDeleteUser(user.id)}>Delete User</button>
                 </div>
               </div>
@@ -99,6 +99,7 @@ const UserAdmin = () => {
           </div>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
+        <a href='http://127.0.0.1:5500/frontend/public/html/Users.html'>Help</a>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './account.css';
 import Navigation from '../../components/navigation/navigation';
 
@@ -71,9 +71,11 @@ const Account = () => {
   return (
     <div className="account-page main-container">
       <header>
-      <Icon icon="ion:reorder-three-outline" className="menu-icon" onClick={handleToggleMenu}/>
+        <Icon icon="ion:reorder-three-outline" className="menu-icon" onClick={handleToggleMenu} />
         <h2>Impresioname</h2>
-        <Icon icon="fa-solid:shopping-cart" className="cart-icon" />
+        <Link to="/cart" className="cart-icon">
+          <Icon icon="ant-design:shopping-cart-outlined" />
+        </Link>
       </header>
       <Navigation toggleMenu={toggleMenu} handleToggleMenu={handleToggleMenu} />
       <div className="content">
@@ -92,6 +94,7 @@ const Account = () => {
       <button className="logout-button" onClick={handleLogout}>
         Logout
       </button>
+      <a href='http://127.0.0.1:5500/frontend/public/html/Account.html'>Help</a>
     </div>
   );
 };
