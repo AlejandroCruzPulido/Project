@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 const NavigationSuperAdmin = ({ toggleMenu, handleToggleMenu }) => {
   const menuItems = [
     { name: 'Glasses', path: '/glasses-admin' },
+    { name: 'Report', path: 'http://localhost:5488/templates/CdT20C7', external: true },
     { name: 'Users', path: '/users-superadmin' },
   ];
   const socialMedia = [
